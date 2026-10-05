@@ -11,24 +11,21 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@400;500;600&family=Quicksand:wght@600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --ink:#231F20;
-      --paper:#FFFDF8;
-      --pink:#FF9EAA;
-      --pink-soft:#FFD9DE;
-      --mint:#A8E6CF;
-      --mint-soft:#D7F5E9;
-      --lilac:#D8B4FE;
-      --lilac-soft:#EADAFE;
-      --yellow:#FFE599;
-      --yellow-soft:#FFF1BE;
-      --blue:#C9D3FB;
-      --blue-soft:#DDE4FF;
-      --line:#2C2130;
-      --shadow:#5B3E65;
+      --ink:#1E1B22;
+      --paper:#FFF9EC;
+      --pink:#FFB3CB;
+      --pink-deep:#FF8FB4;
+      --mint:#B5F0CC;
+      --mint-deep:#8FE6B8;
+      --lilac:#C9BFFF;
+      --yellow:#FFE48A;
+      --peach:#FFCFA8;
+      --sky:#9AD9FF;
+      --line:#1E1B22;
       --max:1120px;
     }
 
@@ -41,12 +38,11 @@
       color:var(--ink);
       font-family:'Poppins',sans-serif;
       background:
-        radial-gradient(circle at 12% 18%, rgba(255,158,170,.90) 0 11%, transparent 31%),
-        radial-gradient(circle at 86% 13%, rgba(216,180,254,.93) 0 12%, transparent 31%),
-        radial-gradient(circle at 13% 88%, rgba(168,230,207,.95) 0 14%, transparent 34%),
-        radial-gradient(circle at 79% 84%, rgba(201,211,251,.96) 0 15%, transparent 35%),
-        radial-gradient(circle at 52% 48%, rgba(255,229,153,.88) 0 18%, transparent 42%),
-        #FAF7F2;
+        radial-gradient(circle at 12% 18%, rgba(255,157,191,.95) 0 11%, transparent 31%),
+        radial-gradient(circle at 86% 13%, rgba(185,166,255,.95) 0 12%, transparent 31%),
+        radial-gradient(circle at 13% 88%, rgba(143,230,184,.95) 0 14%, transparent 34%),
+        radial-gradient(circle at 79% 84%, rgba(255,228,138,.95) 0 15%, transparent 35%),
+        #FFF1E6;
       background-attachment:fixed;
       display:grid;
       place-items:center;
@@ -56,24 +52,24 @@
 
     a{color:inherit}
 
+    /* ---------- Window frame ---------- */
+
     .desktop-window{
       width:min(100%,var(--max));
       min-height:min(760px,calc(100vh - 48px));
       background:var(--paper);
       border:3px solid var(--line);
-      border-radius:9px;
-      box-shadow:
-        11px 11px 0 rgba(44,33,48,.20),
-        20px 22px 50px rgba(44,33,48,.14);
+      border-radius:16px;
+      box-shadow:12px 12px 0 var(--ink);
       overflow:hidden;
       display:flex;
       flex-direction:column;
     }
 
     .window-bar{
-      min-height:56px;
-      padding:0 16px 0 19px;
-      background:linear-gradient(90deg,var(--pink-soft),var(--lilac-soft),var(--blue-soft));
+      min-height:64px;
+      padding:0 20px 0 22px;
+      background:linear-gradient(90deg,#FFA9C6,#D6C8FF);
       border-bottom:3px solid var(--line);
       display:flex;
       align-items:center;
@@ -88,7 +84,7 @@
       min-width:0;
     }
 
-        .window-clouds{
+    .window-clouds{
       display:flex;
       align-items:flex-end;
       gap:8px;
@@ -99,13 +95,13 @@
       width:42px;
       height:42px;
       display:block;
-      filter: drop-shadow(1px 1px 0 rgba(44,33,48,.10));
+      filter:drop-shadow(2px 2px 0 var(--ink));
     }
 
-.window-title{
+    .window-title{
       font-family:'Share Tech Mono',monospace;
-      font-size:.72rem;
-      letter-spacing:.08em;
+      font-size:.8rem;
+      letter-spacing:.12em;
       text-transform:uppercase;
       white-space:nowrap;
       overflow:hidden;
@@ -115,25 +111,29 @@
     .window-controls{
       display:flex;
       align-items:center;
-      gap:7px;
+      gap:10px;
       flex:0 0 auto;
     }
 
     .control{
-      width:18px;
-      height:18px;
-      border:2px solid var(--line);
+      width:24px;
+      height:24px;
+      border:2.5px solid var(--line);
+      border-radius:5px;
       background:var(--yellow);
+      box-shadow:2px 2px 0 var(--ink);
       display:grid;
       place-items:center;
       font-family:'Share Tech Mono',monospace;
-      font-size:11px;
+      font-size:12px;
       font-weight:700;
       line-height:1;
     }
 
-    .control:nth-child(2){background:var(--mint)}
-    .control:nth-child(3){background:var(--pink)}
+    .control:nth-child(2){background:var(--mint-deep)}
+    .control:nth-child(3){background:var(--pink-deep)}
+
+    /* ---------- Window body ---------- */
 
     .window-body{
       position:relative;
@@ -149,28 +149,37 @@
     .window-body::after{
       content:"";
       position:absolute;
-      border:2px solid rgba(44,33,48,.17);
+      border:3px solid var(--ink);
       pointer-events:none;
     }
 
     .window-body::before{
-      width:150px;
-      height:150px;
+      width:200px;
+      height:200px;
       border-radius:50%;
-      right:-54px;
-      top:45px;
-      background:rgba(255,229,153,.26);
+      right:-70px;
+      top:90px;
+      background:var(--yellow);
     }
 
     .window-body::after{
-      width:105px;
-      height:105px;
-      left:-38px;
-      bottom:30px;
-      transform:rotate(10deg);
-      background:rgba(168,230,207,.22);
-      border-radius:20px;
+      width:124px;
+      height:124px;
+      left:-34px;
+      bottom:70px;
+      transform:rotate(-12deg);
+      background:var(--mint-deep);
+      border-radius:26px;
     }
+
+    .sparkle{
+      position:absolute;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .sparkle-a{top:86px;left:52px;width:46px;height:46px;transform:rotate(-8deg)}
+    .sparkle-b{top:198px;right:84px;width:34px;height:34px;transform:rotate(10deg)}
 
     .topline{
       display:flex;
@@ -185,24 +194,17 @@
     .name{
       font-family:'Share Tech Mono', monospace;
       font-size:.82rem;
-      letter-spacing:.08em;
+      letter-spacing:.12em;
       text-transform:uppercase;
     }
 
     .folio{
-        font-family:'Share Tech Mono', monospace;
-        font-size:.82rem;
-        letter-spacing:.08em;
-        text-transform:uppercase;
-        text-align:right;
-        white-space:nowrap;
-    }
-
-    .journey-line{
-      display:block;
+      font-family:'Share Tech Mono', monospace;
+      font-size:.82rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      text-align:right;
       white-space:nowrap;
-      font-size:.78em;
-      margin-top:.08em;
     }
 
     .hero{
@@ -222,120 +224,283 @@
       letter-spacing:-.035em;
     }
 
+    .journey-line{
+      display:block;
+      white-space:nowrap;
+      font-size:.78em;
+      margin-top:.08em;
+    }
+
+    .hl{
+      background:linear-gradient(transparent 58%, var(--pink) 58%, var(--pink) 90%, transparent 90%);
+      padding:0 .12em;
+    }
+
     .explore{
-      margin:26px 0 18px;
+      width:fit-content;
+      margin:30px auto 0;
+      padding:8px 18px;
+      background:var(--ink);
+      color:var(--paper);
+      border-radius:999px;
       font-family:'Share Tech Mono',monospace;
       font-size:.76rem;
-      letter-spacing:.09em;
+      letter-spacing:.2em;
       text-transform:uppercase;
     }
+
+    .explore span{color:var(--pink-deep)}
+
+    /* ---------- Sticker tiles ---------- */
 
     .tiles{
       width:100%;
       display:flex;
       flex-wrap:wrap;
       justify-content:center;
-      align-items:stretch;
-      gap:18px;
-      margin:0 auto;
+      align-items:flex-start;
+      gap:44px 34px;
+      margin:56px auto 0;
+      padding-bottom:20px;
     }
 
     .tile{
-      --tile-bg:var(--pink-soft);
-      --tile-accent:var(--pink);
-      flex:1 1 245px;
-      max-width:310px;
-      min-height:148px;
+      --tile-bg:var(--pink);
+      --tile-accent:var(--yellow);
+      --tilt:-2deg;
+      flex:1 1 260px;
+      max-width:330px;
+      min-width:0;
       position:relative;
+      display:block;
+      color:var(--ink);
       text-decoration:none;
-      background:var(--tile-bg);
-      border:2px solid var(--line);
-      border-radius:20px;
-      padding:22px 21px 20px;
       text-align:left;
-      box-shadow:
-        inset 0 0 0 5px rgba(255,255,255,.52),
-        5px 6px 0 rgba(44,33,48,.16);
-      transition:transform .16s ease, box-shadow .16s ease;
-      overflow:hidden;
+      border-radius:16px;
+      box-shadow:8px 8px 0 var(--ink);
+      transform:rotate(var(--tilt));
+      transition:transform .14s ease, box-shadow .14s ease;
     }
 
     .tile:nth-child(2){
-      --tile-bg:var(--mint-soft);
-      --tile-accent:var(--mint);
+      --tile-bg:var(--mint);
+      --tile-accent:var(--lilac);
+      --tilt:1.5deg;
+      margin-top:36px;
     }
 
     .tile:nth-child(3){
-      --tile-bg:var(--blue-soft);
-      --tile-accent:var(--blue);
-    }
-
-    .tile::before{
-      content:"";
-      position:absolute;
-      width:64px;
-      height:64px;
-      background:var(--tile-accent);
-      border-radius:50%;
-      right:-16px;
-      top:-18px;
-      opacity:.68;
-      border:1.5px solid var(--line);
+      --tile-bg:var(--lilac);
+      --tile-accent:var(--peach);
+      --tilt:-1deg;
     }
 
     .tile:hover,
     .tile:focus-visible{
-      transform:translateY(-4px);
-      box-shadow:
-        inset 0 0 0 5px rgba(255,255,255,.58),
-        8px 10px 0 rgba(44,33,48,.18);
+      transform:translate(5px,5px) rotate(0deg);
+      box-shadow:3px 3px 0 var(--ink);
       outline:none;
     }
 
-    .tile-num{
-      display:block;
-      font-family:'Share Tech Mono',monospace;
-      font-size:.69rem;
+    .tile:focus-visible{
+      outline:3px solid var(--ink);
+      outline-offset:5px;
+    }
+
+    .tile-card{
+      position:relative;
+      box-sizing:border-box;
+      min-height:320px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      padding:38px 24px 22px;
+      background:var(--tile-bg);
+      border:3px solid var(--ink);
+      border-radius:16px;
+      overflow:hidden;
+    }
+
+    .tile-card::before{
+      content:"";
+      position:absolute;
+      top:-28px;
+      right:-28px;
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      background:var(--tile-accent);
+      border:3px solid var(--ink);
+    }
+
+    .tile-icon{
+      position:absolute;
+      top:18px;
+      right:18px;
+      line-height:0;
+    }
+
+    .tile-icon svg{width:28px;height:28px;display:block}
+
+    .tile-mascot{
+      position:absolute;
+      top:-30px;
+      left:-18px;
+      z-index:2;
+      line-height:0;
+      filter:drop-shadow(3px 3px 0 var(--ink));
+    }
+
+    .tile-mascot svg{width:64px;height:48px;display:block}
+
+    .tile:nth-child(1) .tile-mascot{transform:rotate(-10deg)}
+    .tile:nth-child(2) .tile-mascot{transform:rotate(8deg)}
+    .tile:nth-child(3) .tile-mascot{transform:rotate(-8deg)}
+
+    .tile-tag{
+      position:relative;
+      z-index:1;
+      align-self:flex-start;
+      transform:rotate(-3deg);
+      background:var(--tile-accent);
+      border:2.5px solid var(--ink);
+      border-radius:999px;
+      padding:4px 13px;
+      box-shadow:3px 3px 0 var(--ink);
+      font-size:.75rem;
+      font-weight:700;
       letter-spacing:.08em;
-      margin-bottom:14px;
-      opacity:.67;
+      line-height:1.3;
+      text-transform:uppercase;
     }
 
     .tile-title{
       display:block;
-      font-family:'Quicksand',sans-serif;
-      font-size:1.1rem;
+      margin-top:10px;
+      max-width:11em;
+      font-size:1.625rem;
       font-weight:700;
-      line-height:1.3;
-      padding-right:32px;
+      line-height:1.15;
     }
 
-    .tile-arrow{
-      position:absolute;
-      right:18px;
-      bottom:15px;
-      width:34px;
-      height:34px;
-      border:1.5px solid var(--line);
-      border-radius:50%;
-      background:rgba(255,255,255,.67);
-      display:grid;
-      place-items:center;
-      font-size:1.1rem;
-      transition:transform .16s ease;
+    .tile-blurb{
+      display:block;
+      font-size:.906rem;
+      font-weight:500;
+      line-height:1.55;
+      color:#2B2630;
     }
 
-    .tile:hover .tile-arrow,
-    .tile:focus-visible .tile-arrow{
-      transform:translateX(3px);
+    .tile-foot{
+      margin-top:auto;
+      padding-top:10px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .tile-count{
+      font-family:'Cormorant Garamond',serif;
+      font-style:italic;
+      font-weight:700;
+      font-size:4.5rem;
+      line-height:.8;
+    }
+
+    .tile-go{
+      border:2px solid var(--ink);
+      border-radius:999px;
+      background:var(--ink);
+      color:var(--paper);
+      padding:9px 18px;
+      font-size:.8125rem;
+      font-weight:600;
+      letter-spacing:.06em;
+      line-height:1;
+      text-transform:uppercase;
+      transition:background .14s ease, color .14s ease;
+    }
+
+    .tile:hover .tile-go,
+    .tile:focus-visible .tile-go{
+      background:var(--paper);
+      color:var(--ink);
+    }
+
+    /* ---------- Status bar ---------- */
+
+    .status-stripe{
+      display:flex;
+      height:12px;
+      border-top:3px solid var(--ink);
+    }
+
+    .status-stripe span{flex:1}
+    .status-stripe span:nth-child(1){background:var(--pink)}
+    .status-stripe span:nth-child(2){background:var(--mint)}
+    .status-stripe span:nth-child(3){background:var(--yellow)}
+    .status-stripe span:nth-child(4){background:var(--lilac)}
+
+    .status-bar{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px 24px;
+      padding:14px 24px;
+      background:var(--ink);
+      color:var(--paper);
+      font-family:'Share Tech Mono',monospace;
+      font-size:.75rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .status-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px 22px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .status-dot{color:#5CF2A0}
+
+    .status-links{
+      display:flex;
+      gap:18px;
+    }
+
+    .status-links a{
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    .status-links a:nth-child(1){color:var(--lilac)}
+    .status-links a:nth-child(2){color:var(--pink)}
+    .status-links a:hover{color:var(--paper)}
+    .status-links a:focus-visible{outline:2px solid var(--paper);outline-offset:3px}
+
+    /* ---------- Responsive ---------- */
+
+    @media(max-width:900px){
+      .sparkle{display:none}
     }
 
     @media(max-width:720px){
       body{padding:14px}
-      .desktop-window{min-height:calc(100vh - 28px)}
-      .window-bar{min-height:51px}
+      .desktop-window{
+        min-height:calc(100vh - 28px);
+        border-radius:14px;
+        box-shadow:7px 7px 0 var(--ink);
+      }
+      .window-bar{min-height:56px}
       .window-title{display:none}
       .window-body{justify-content:flex-start}
+      .window-body::before{width:120px;height:120px;top:40px;right:-52px}
+      .window-body::after{width:84px;height:84px;left:-30px;bottom:40px}
       .topline{
         margin-bottom:50px;
         align-items:flex-start;
@@ -345,14 +510,38 @@
         white-space:normal;
         font-size:.9em;
       }
-      .tiles{flex-direction:column;align-items:stretch}
-      .tile{max-width:none;min-height:125px}
+      .tiles{
+        flex-direction:column;
+        align-items:stretch;
+        gap:46px;
+        margin-top:48px;
+      }
+      .tile{flex:0 0 auto;max-width:none}
+      .tile:nth-child(2){margin-top:0}
     }
 
     @media(prefers-reduced-motion:reduce){
       *{scroll-behavior:auto!important}
-      .tile,.tile-arrow{transition:none}
+      .tile,.tile-go{transition:none}
     }
+
+    .status-links a.status-linkedin{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--paper);
+  text-decoration:none;
+}
+.status-links a.status-linkedin svg{
+  width:22px;
+  height:22px;
+  display:block;
+  transition:transform .14s ease;
+}
+.status-links a.status-linkedin:hover{color:var(--pink)}
+.status-links a.status-linkedin:hover svg,
+.status-links a.status-linkedin:focus-visible svg{transform:translateY(-2px)}
+
   </style>
 </head>
 
@@ -401,6 +590,13 @@
     </div>
 
     <div class="window-body">
+      <svg class="sparkle sparkle-a" viewBox="0 0 44 44" aria-hidden="true">
+        <path d="M22 2Q24 18 42 22Q24 26 22 42Q20 26 2 22Q20 18 22 2Z" fill="#C9BFFF" stroke="#1E1B22" stroke-width="2.5" stroke-linejoin="round"/>
+      </svg>
+      <svg class="sparkle sparkle-b" viewBox="0 0 44 44" aria-hidden="true">
+        <path d="M22 2Q24 18 42 22Q24 26 22 42Q20 26 2 22Q20 18 22 2Z" fill="#FF8FB4" stroke="#1E1B22" stroke-width="2.8" stroke-linejoin="round"/>
+      </svg>
+
       <div class="topline">
         <div class="name">Ecclesia Morain</div>
         <div class="folio"> Solutions Engineering Portfolio · 2026</div>
@@ -412,33 +608,101 @@
           <span class="journey-line">
             problem <span class="arrow">→</span>
             possibility <span class="arrow">→</span>
-            solution.
+            <span class="hl">solution.</span>
           </span>
         </h1>
 
-        <p class="explore">Explore the work ↓</p>
+        <p class="explore">Explore the work <span>↓</span></p>
 
         <nav class="tiles" aria-label="Case studies">
           <a class="tile" href="case-studies/early-solutions-planning/index.html">
-            <span class="tile-num">01 / CASE STUDY</span>
-            <span class="tile-title">Early Solution Planning</span>
-            <span class="tile-arrow" aria-hidden="true">→</span>
+            <span class="tile-mascot" aria-hidden="true">
+              <svg viewBox="9 11 48 36">
+                <path d="M20 44h24c6 0 11-4.9 11-11 0-5.4-3.7-9.9-8.8-10.8C44.9 16.7 40.9 14 36 14c-4.1 0-7.7 2-9.9 5.1C24.9 19 23.6 18.7 22 18.7 16.5 18.7 12 23.2 12 28.7 12 35.1 15.9 44 20 44z" fill="#9AD9FF" stroke="#1E1B22" stroke-width="2.4" stroke-linejoin="round"/>
+                <circle cx="26" cy="29" r="4" fill="#1E1B22"/>
+                <circle cx="27.6" cy="27.4" r="1.3" fill="#fff"/>
+                <circle cx="38" cy="29" r="4" fill="#1E1B22"/>
+                <circle cx="39.6" cy="27.4" r="1.3" fill="#fff"/>
+                <path d="M29.5 37.5h5" fill="none" stroke="#1E1B22" stroke-width="2.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="tile-card">
+              <span class="tile-tag">Case study</span>
+              <span class="tile-title">Early Solution Planning</span>
+              <span class="tile-blurb">Turning a vague ask into a plan a team can build from.</span>
+              <span class="tile-foot">
+                <span class="tile-count" aria-hidden="true">01</span>
+                <span class="tile-go">Open →</span>
+              </span>
+            </span>
           </a>
 
           <a class="tile" href="case-studies/hvac-modernization/index.html">
-            <span class="tile-num">02 / CASE STUDY</span>
-            <span class="tile-title">HVAC Modernization</span>
-            <span class="tile-arrow" aria-hidden="true">→</span>
+            <span class="tile-mascot" aria-hidden="true">
+              <svg viewBox="9 11 48 36">
+                <path d="M20 44h24c6 0 11-4.9 11-11 0-5.4-3.7-9.9-8.8-10.8C44.9 16.7 40.9 14 36 14c-4.1 0-7.7 2-9.9 5.1C24.9 19 23.6 18.7 22 18.7 16.5 18.7 12 23.2 12 28.7 12 35.1 15.9 44 20 44z" fill="#9AD9FF" stroke="#1E1B22" stroke-width="2.4" stroke-linejoin="round"/>
+                <circle cx="26" cy="30" r="4" fill="#1E1B22"/>
+                <circle cx="27.4" cy="28.6" r="1.3" fill="#fff"/>
+                <circle cx="38" cy="30" r="4" fill="#1E1B22"/>
+                <circle cx="39.4" cy="28.6" r="1.3" fill="#fff"/>
+                <path d="M28 36.5c1.3 1.6 3 2.4 5 2.4s3.7-.8 5-2.4" fill="none" stroke="#1E1B22" stroke-width="2.4" stroke-linecap="round"/>
+                <circle cx="20" cy="36" r="2.4" fill="#FF8FB4"/>
+                <circle cx="46" cy="36" r="2.4" fill="#FF8FB4"/>
+              </svg>
+            </span>
+            <span class="tile-card">
+              <span class="tile-tag">Case study</span>
+              <span class="tile-title">HVAC Modernization</span>
+              <span class="tile-blurb">Mapping the path from a legacy HVAC setup to a modern one.</span>
+              <span class="tile-foot">
+                <span class="tile-count" aria-hidden="true">02</span>
+                <span class="tile-go">Open →</span>
+              </span>
+            </span>
           </a>
 
           <a class="tile" href="case-studies/auto-shop-revenue-recovery/index.html">
-            <span class="tile-num">03 / TECHNICAL CASE STUDY</span>
-            <span class="tile-title">Revenue Recovery Pipeline</span>
-            <span class="tile-arrow" aria-hidden="true">→</span>
+            <span class="tile-mascot" aria-hidden="true">
+              <svg viewBox="9 11 48 36">
+                <path d="M20 44h24c6 0 11-4.9 11-11 0-5.4-3.7-9.9-8.8-10.8C44.9 16.7 40.9 14 36 14c-4.1 0-7.7 2-9.9 5.1C24.9 19 23.6 18.7 22 18.7 16.5 18.7 12 23.2 12 28.7 12 35.1 15.9 44 20 44z" fill="#9AD9FF" stroke="#1E1B22" stroke-width="2.4" stroke-linejoin="round"/>
+                <path d="M21.5 30h8M34.5 30h8" fill="none" stroke="#1E1B22" stroke-width="2.6" stroke-linecap="round"/>
+                <circle cx="32" cy="38" r="2.3" fill="none" stroke="#1E1B22" stroke-width="2.2"/>
+              </svg>
+            </span>
+            <span class="tile-card">
+              <span class="tile-tag">Technical case study</span>
+              <span class="tile-title">Revenue Recovery Pipeline</span>
+              <span class="tile-blurb">Finding the revenue an auto shop was leaving behind, and winning it back.</span>
+              <span class="tile-foot">
+                <span class="tile-count" aria-hidden="true">03</span>
+                <span class="tile-go">Open →</span>
+              </span>
+            </span>
           </a>
         </nav>
       </section>
     </div>
+
+    <div class="window-status">
+      <div class="status-stripe" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="status-bar">
+        <ul class="status-meta">
+          <li><span class="status-dot" aria-hidden="true">●</span></li>
+          <li>Updated Oct 2026</li>
+        </ul>
+        <div class="status-links">
+          <a class="status-linkedin" href="https://www.linkedin.com/in/ecclesiamorain/" target="_blank" rel="noopener noreferrer" aria-label="Connect with me on LinkedIn">
+            <span>Connect with me on</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
   </main>
 </body>
 </html>
