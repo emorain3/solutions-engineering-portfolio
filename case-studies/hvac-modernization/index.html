@@ -176,8 +176,42 @@
       font-size: 0.66rem;
     }
   }
+    /* At-a-glance strip */
+  .glance { background: #FAF7F2; padding: 36px 24px 8px; }
+  .glance-grid {
+    max-width: 1080px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1.5px solid #231F20; border-bottom: 1.5px solid #231F20;
+  }
+  .glance-item { padding: 20px 22px; border-left: 1.5px solid rgba(35,31,32,0.18); }
+  .glance-item:first-child { border-left: 0; padding-left: 0; }
+  .glance-label {
+    display: block; margin: 0 0 8px;
+    font-family: 'Share Tech Mono', monospace; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #b5548a;
+  }
+  .glance-value {
+    display: block; margin: 0;
+    font-family: 'Quicksand', sans-serif; font-weight: 700;
+    font-size: 15px; line-height: 1.45; color: #231F20;
+  }
+  a.glance-item { display: block; text-decoration: none; color: inherit; }
+  .glance-label::after { content: " \2193"; }
+  a.glance-item:hover .glance-value,
+  a.glance-item:focus-visible .glance-value { text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 800px) {
+    .glance-grid { grid-template-columns: 1fr 1fr; }
+    .glance-item:nth-child(odd) { border-left: 0; padding-left: 0; }
+    .glance-item:nth-child(n+3) { border-top: 1.5px solid rgba(35,31,32,0.18); }
+  }
+
+
+  /* Section kickers */
+  .sec-kicker { display: block; margin: 0 0 10px; font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #b5548a; }
+  .sec-kicker.center { text-align: center; }
 
 </style>
+
 </head>
 <body>
   <a class="portfolio-back" href="../../index.html" aria-label="View all case studies">
@@ -199,9 +233,9 @@
 
   <!-- HERO: SPLIT PANEL -->
   <div class="hero-split" style="position: relative; display: flex; flex-wrap: wrap;">
-    <div style="flex: 1 1 480px; background: #FFF0F0; padding: 80px 56px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box;">
+    <div style="flex: 1 1 480px; background: #FFDDEB; padding: 80px 56px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box;">
       <div class="hero-copy">
-        <span class="hero-eyebrow" style="display: inline-block; font-family: 'Share Tech Mono', monospace; font-weight: 700; color: #231F20; background: #FFE599; border-radius: 999px; letter-spacing: 0.4px; margin-bottom: 22px;">CRM EVALUATION :: SOLUTIONS ENGINEERING</span>
+        <span class="hero-eyebrow" style="display: inline-block; font-family: 'Share Tech Mono', monospace; font-weight: 700; color: #231F20; background: #FFE599; border-radius: 999px; letter-spacing: 0.4px; margin-bottom: 22px;">CASE STUDY :: CRM EVALUATION</span>
         <h1 class="hero-title" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 700; color: #231F20; margin: 0 0 18px; line-height: 1.15; max-width: 460px;">Modernizing a family HVAC business</h1>
         <p class="hero-subtitle" style="font-family: 'Poppins', sans-serif; font-style: italic; color: #231F20; opacity: 0.65; margin: 0 0 30px; max-width: 420px; line-height: 1.6;">Told through my late father's HVAC business, A&amp;K Heating and Air, circa 2004–2019.</p>
         <div style="display: flex; align-items: center; gap: 4px;">
@@ -218,9 +252,32 @@
   </div>
 
   <!-- WHO A&K WAS / HOW IT WORKED (unified section, distinct background) -->
+     <!-- AT A GLANCE -->
+  <div class="glance">
+    <div class="glance-grid">
+      <a class="glance-item" href="#the-business">
+        <span class="glance-label">Customer</span>
+        <p class="glance-value">A two-person HVAC business that runs on pen and paper</p>
+      </a>
+      <a class="glance-item" href="#the-question">
+        <span class="glance-label">Question</span>
+        <p class="glance-value">Would Salesforce make the owner's work meaningfully better?</p>
+      </a>
+      <a class="glance-item" href="#what-was-evaluated">
+        <span class="glance-label">Evaluated</span>
+        <p class="glance-value">Core Salesforce, Field Service, and Agentforce + Einstein</p>
+      </a>
+      <a class="glance-item" href="#live-demo">
+        <span class="glance-label">Built</span>
+        <p class="glance-value">A Field Service demo of one job, start to finish</p>
+      </a>
+    </div>
+  </div>
+  
   <div id="the-business" style="background: #C9D3FB; padding: 72px 0 64px;">
     <div style="max-width: 1080px; margin: 0 auto; padding: 0 24px; text-align: center;">
 
+      <span class="sec-kicker center">Discovery</span>
       <h2 style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 700; font-size: 40px; color: #231F20; margin: 0 0 32px;">A&amp;K Didn't Need Fixing.</h2>
 
       <img src="assets/how-ak-worked.png" alt="Illustrated diagram: How A&amp;K Worked. A loop of word-of-mouth referral, phone call, schedule visit, travel to job, complete work and payment, and satisfied customer leading back to the next referral." style="width: 100%; max-width: 920px; height: auto; margin: 0 auto 14px; display: block;">
@@ -241,9 +298,9 @@
   </div>
 
   <!-- THE QUESTION -->
-  <div style="max-width: 900px; margin: 0 auto; padding: 104px 24px 84px; text-align: center;">
-    <h2 class="question-title" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 700; line-height: 1.15; color: #231F20; margin: 0 0 28px;">Would introducing Salesforce have actually made my father's work meaningfully better? (Discovery)</h2>
-    <p style="font-family: 'Poppins', sans-serif; font-size: 15px; line-height: 1.75; color: #231F20; opacity: 0.75; margin: 0; max-width: 760px; margin-left: auto; margin-right: auto;">The business worked, but Anderson had his gripes: reshuffling the whole day's schedule in the middle of a site visit, and paperwork that ate up time he'd rather spend on HVAC work. Easing those could improve his life as a business owner and a technician. Below are 11 scenarios I've identified where the work gets inefficient or hard. The list isn't exhaustive, but it covers the flow of a typical case from first call to final paperwork.</p>
+  <div id="the-question" style="max-width: 900px; margin: 0 auto; padding: 104px 24px 84px; text-align: center;">
+    <h2 class="question-title" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 700; line-height: 1.15; color: #231F20; margin: 0 0 28px;">Would introducing Salesforce have actually made my father's work meaningfully better?</h2>
+    <p style="font-family: 'Poppins', sans-serif; font-size: 15px; line-height: 1.75; color: #231F20; opacity: 0.75; margin: 0; max-width: 760px; margin-left: auto; margin-right: auto;">The business worked, but Anderson had his gripes: reshuffling the whole day's schedule in the middle of a site visit, and paperwork that ate up time he'd rather spend on HVAC work. Easing those could improve his life as a business owner and a technician. Below are 11 scenarios I've identified where the work gets inefficient or hard. I found them by watching the business firsthand, without formal interviews, so in a real engagement I'd confirm each one with the owners during discovery. The list isn't exhaustive, but it covers the flow of a typical case from first call to final paperwork.</p>
   </div>
 
   <!-- WHERE COULD A&K IMPROVE -->
@@ -351,11 +408,12 @@
   </div>
 
   <!-- WHAT WAS EVALUATED: three-way diagonal comparison -->
-  <div class="tri-banner">
+  <div class="tri-banner" id="what-was-evaluated">
     <div class="tri-bg-pink"></div>
     <div class="tri-bg-green"></div>
     <div class="tri-bg-yellow"></div>
     <div class="tri-inner">
+      <span class="sec-kicker center">Fit assessment</span>
       <h2 style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 30px; color: #231F20; margin: 0 0 8px; text-align: center;">What was evaluated</h2>
       <p class="cmp-kicker">CORE SALESFORCE &nbsp;·&nbsp; + FIELD SERVICE &nbsp;·&nbsp; + AGENTFORCE + EINSTEIN</p>
       <p class="cmp-intro">I evaluated Salesforce as three layers, each priced higher and each building on the one below: Core Salesforce, the customer-management foundation; Field Service, which extends that data to schedule, dispatch, and mobile support; and Agentforce + Einstein, an AI layer on top. I looked at more of Salesforce than I list here, so the tables below show only the objects and capabilities that bear most directly on the scenarios above. For each of those, I asked: does it help Anderson more than the setup and data entry it adds? The live demo below walks through a small workflow I built. Agentforce and Einstein I evaluated as a possible next layer rather than building them in this project.</p>
@@ -415,7 +473,8 @@
   <p style="font-family: 'Poppins', sans-serif; font-size: 12.5px; color: #231F20; opacity: 0.55; line-height: 1.7; text-align: center; max-width: 720px; margin: 40px auto 64px;">Pricing above is approximate — pulled from Salesforce's published list pricing and subject to change with actual configuration and negotiated terms. Salesforce sells some of the AI features as Einstein for Field Service and others as Agentforce for Field Service, and its help documentation says the Einstein ones don't need an Agentforce subscription, so which add-on a feature needs can change the price.</p>
 
   <!-- LIVE DEMO -->
-  <div style="max-width: 760px; margin: 0 auto; padding: 0 24px 56px;">
+  <div id="live-demo" style="max-width: 760px; margin: 0 auto; padding: 0 24px 56px;">
+    <span class="sec-kicker">Proof of concept</span>
     <h2 style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 24px; color: #231F20; margin: 0 0 16px;">Live demo</h2>
     <p style="font-family: 'Poppins', sans-serif; font-size: 15px; line-height: 1.75; color: #231F20; opacity: 0.85; margin: 0 0 22px;">Showing everything would have you sitting here forever, so this follows a single workflow instead: a repeat customer calls, Anderson pulls up their record, logs the job, requests the part he's missing, and the follow-up doesn't get lost while he waits.</p>
     <div style="position: relative; border-radius: 20px; overflow: hidden; background: #000; box-shadow: 0 8px 28px rgba(35,31,32,0.18);">
@@ -426,7 +485,7 @@
 
   <!-- WHAT BUILDING IT SHOWED -->
   <div style="max-width: 1080px; margin: 0 auto; padding: 40px 24px 64px;">
-    <h2 style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 26px; color: #231F20; margin: 0 0 10px;">What building it showed</h2>
+    <h2 style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 26px; color: #231F20; margin: 0 0 10px;">Findings</h2>
     <p style="font-family: 'Poppins', sans-serif; font-size: 14px; line-height: 1.7; color: #231F20; opacity: 0.7; margin: 0 0 30px;">These findings come from building the demo above in about three weeks, in a free Developer Edition org. I couldn't configure everything for the phone, so I worked mostly on desktop. Salesforce sells Field Service Mobile as the technician's tool, and a full setup could make Anderson's day-to-day work mostly mobile. I also assume my father wouldn't configure Salesforce himself: he'd pay someone to set it up around how he works, then check back when Salesforce adds features, he finds a new use case, or something breaks.</p>
     <div class="synth-grid">
       <div class="synth-col synth-good">
@@ -454,17 +513,18 @@
   <!-- CONCLUSION -->
   <div style="background: #EBDAFF;">
   <div style="max-width: 900px; margin: 0 auto; padding: 80px 24px 96px;">
+    <span class="sec-kicker center">Success criteria</span>
     <h2 class="question-title" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 700; line-height: 1.15; color: #231F20; margin: 0 0 36px; text-align: center; text-wrap: balance;">How I'd evaluate whether Salesforce is a strong solution.</h2>
     <h3 style="font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 18px; color: #231F20; margin: 0 0 10px;">Value that's harder to measure than money</h3>
     <p style="font-family: 'Poppins', sans-serif; font-size: 14px; line-height: 1.7; color: #231F20; opacity: 0.8; margin: 0 0 10px; ">A retrospective can't produce a real ROI figure or say whether Anderson would have adopted Salesforce. What's more, A&amp;K was already a successful business, so success here isn't necessarily more leads or more growth. Salesforce would have to improve the business Anderson already wanted to run, and a lot of that improvement isn't money. What I can recommend is how to evaluate it: a baseline week observing the current process without changing it, then a pilot week with the stripped-down setup, measuring the same things both times. The question becomes whether Salesforce removed more work than it added. Here's what I'd look for, and how I'd measure it:</p>
     <ul style="font-family: 'Poppins', sans-serif; font-size: 14px; line-height: 1.7; color: #231F20; opacity: 0.8; margin: 0 0 12px; padding-left: 22px;">
-      <li style="margin-bottom: 6px;">Less to keep in his head. Customer history, open follow-ups, and what's still owed to a customer live in the system instead of in notebooks, envelopes, and memory. <b><i>Potential Measure: time to find a repeat customer's history.</i></b></li>
-      <li style="margin-bottom: 6px;">Fewer things slipping through. A promised callback or an unresolved job gets surfaced instead of remembered, which protects the reliability his reputation was built on. <b><i>Potential Measure: number of open jobs or promised follow-ups still being tracked outside the system.</i></b></li>
+      <li style="margin-bottom: 6px;">Less to keep in his head. Customer history, open follow-ups, and what's still owed to a customer live in the system instead of in notebooks, envelopes, and memory. <b><i>Success metric: time to find a repeat customer's history.</i></b></li>
+      <li style="margin-bottom: 6px;">Fewer things slipping through. A promised callback or an unresolved job gets surfaced instead of remembered, which protects the reliability his reputation was built on. <b><i>Success metric: number of open jobs or promised follow-ups still being tracked outside the system.</i></b></li>
       <li style="margin-bottom: 6px;">Information that doesn't depend on one person. What's known about a customer or a job is easier for a partner, or a future helper, to find.</li>
       <li style="margin-bottom: 6px;">Customers who can know more of what's happening. Arrival times and job updates can reach them without them having to call and ask.</li>
-      <li style="margin-bottom: 6px;">Less after-hours paperwork, and less of the stress that comes with it. <b><i>Potential Measure: after-hours administrative time, and time spent documenting a visit.</i></b></li>
-      <li style="margin-bottom: 6px;">Easier than the old way. <b><i>Potential Measure: Anderson and Kenny's own verdict on whether it was easier, and whether they'd keep using it.</i></b></li>
-      <li style="margin-bottom: 6px;"><b><u>Time back.</u></b> This is probably one of the biggest quality-of-life improvements a digital system could give a business owner. It doesn't have to become more paid work: Anderson might work fewer hours, spend more of them with his family, or run the same business with less mental overhead. If he wanted more capacity, Salesforce could support that too, but growth isn't the point. <b><i>Potential Measure: time to reschedule when the day changes.</i></b></li>
+      <li style="margin-bottom: 6px;">Less after-hours paperwork, and less of the stress that comes with it. <b><i>Success metric: after-hours administrative time, and time spent documenting a visit.</i></b></li>
+      <li style="margin-bottom: 6px;">Easier than the old way. <b><i>Success metric: Anderson and Kenny's own verdict on whether it was easier, and whether they'd keep using it.</i></b></li>
+      <li style="margin-bottom: 6px;"><b><u>Time back.</u></b> This is probably one of the biggest quality-of-life improvements a digital system could give a business owner. It doesn't have to become more paid work: Anderson might work fewer hours, spend more of them with his family, or run the same business with less mental overhead. If he wanted more capacity, Salesforce could support that too, but growth isn't the point. <b><i>Success metric: time to reschedule when the day changes.</i></b></li>
     </ul>
     <p style="font-family: 'Poppins', sans-serif; font-size: 14px; line-height: 1.7; color: #231F20; opacity: 0.8; margin: 0 0 8px; ">None of these has a price tag. Only the owner can say what they're worth to him.</p>
 
