@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathways AI — agentic AI case study</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23EBDAFF'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-weight='bold' font-size='34' fill='%23231F20'%3EEM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Poppins:wght@400;500;600&family=Quicksand:wght@600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Poppins',sans-serif;color:#241A3A;background:#FBF3FF;overflow-x:hidden;line-height:1.6}
+body:before{content:"";position:fixed;inset:0;z-index:-1;opacity:.75;background:
+ radial-gradient(700px 500px at 8% 6%,#FF8FD0 0,transparent 65%),radial-gradient(700px 520px at 95% 4%,#6EE7FF 0,transparent 65%),
+ radial-gradient(800px 600px at 80% 60%,#B79BFF 0,transparent 65%),radial-gradient(700px 600px at 10% 75%,#9FF5CF 0,transparent 65%),radial-gradient(600px 500px at 60% 100%,#FFC9A8 0,transparent 65%)}
+a{color:inherit}
+.wrap{max-width:1020px;margin:0 auto;padding:30px 28px 70px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.top b{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px}
+.top span{font-family:'Share Tech Mono',monospace;font-size:12px;opacity:.7}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;min-height:440px;margin-bottom:34px}
+.kick{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6B4DFF;text-transform:uppercase}
+.hero h1{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:84px;line-height:.98;margin:10px 0 10px;background:linear-gradient(95deg,#E0359A,#6B4DFF 55%,#13A9E6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tagline{font-family:'Quicksand',sans-serif;font-weight:700;font-size:26px;line-height:1.25;margin:0 0 14px}
+.hero p.lede{font-size:16px;max-width:460px;margin:0 0 22px;opacity:.85}
+.btn{display:inline-block;padding:13px 26px;border-radius:99px;font-weight:500;color:#fff;text-decoration:none;background:linear-gradient(95deg,#E0359A,#6B4DFF);box-shadow:0 14px 30px rgba(107,77,255,.4);transition:transform .15s}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);color:#fff}
+.cap{font-family:'Share Tech Mono',monospace;font-size:11px;opacity:.6;margin:12px 0 0}
+.iso{position:relative;height:400px;perspective:1400px}
+.slab{position:absolute;left:50px;width:300px;height:170px;border-radius:26px;transform:rotateX(58deg) rotateZ(-38deg);display:flex;align-items:center;justify-content:center;font-family:'Share Tech Mono',monospace;font-weight:700;font-size:15px;border:2px solid rgba(255,255,255,.85)}
+.s1{top:20px;background:linear-gradient(135deg,#FFD0EC,#FF8FD0);box-shadow:1px 1px 0 #d9569f,2px 2px 0 #d9569f,3px 3px 0 #d9569f,4px 4px 0 #d9569f,5px 5px 0 #d9569f,6px 6px 0 #d9569f,7px 7px 0 #d9569f,8px 8px 0 #d9569f,0 40px 50px rgba(120,60,200,.25)}
+.s2{top:115px;background:linear-gradient(135deg,#E4D8FF,#A78BFF);box-shadow:1px 1px 0 #7656e0,2px 2px 0 #7656e0,3px 3px 0 #7656e0,4px 4px 0 #7656e0,5px 5px 0 #7656e0,6px 6px 0 #7656e0,7px 7px 0 #7656e0,8px 8px 0 #7656e0,0 40px 50px rgba(120,60,200,.25)}
+.s3{top:210px;background:linear-gradient(135deg,#C4F4FF,#6EE7FF);box-shadow:1px 1px 0 #2aa9d1,2px 2px 0 #2aa9d1,3px 3px 0 #2aa9d1,4px 4px 0 #2aa9d1,5px 5px 0 #2aa9d1,6px 6px 0 #2aa9d1,7px 7px 0 #2aa9d1,8px 8px 0 #2aa9d1,0 40px 50px rgba(120,60,200,.25)}
+.sec{position:relative;margin:0 60px 44px 0;padding:30px 34px 34px;border-radius:28px;background:linear-gradient(150deg,rgba(255,255,255,.88),rgba(255,255,255,.55));border:2px solid #fff;box-shadow:0 34px 60px rgba(110,60,200,.2),0 2px 0 rgba(255,255,255,.9) inset;backdrop-filter:blur(10px)}
+.sec.alt{margin:0 0 44px 60px}
+.head{display:flex;align-items:center;gap:18px;margin-bottom:8px}
+.num{font-family:'Share Tech Mono',monospace;font-weight:700;font-size:54px;line-height:1;background:linear-gradient(160deg,#FF8FD0,#6B4DFF 60%,#13A9E6);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(2px 3px 0 rgba(107,77,255,.25))}
+.head h2{margin:0;font-family:'Quicksand',sans-serif;font-weight:700;font-size:28px;line-height:1.2}
+.sec p{margin:0 0 14px;font-size:15px}
+.sec p.small{font-size:13px;opacity:.7}
+.cards{display:grid;gap:16px;margin:14px 0 4px}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}.c2{grid-template-columns:1fr 1fr}
+.card{background:rgba(255,255,255,.9);border:1.5px solid rgba(107,77,255,.25);border-radius:16px;padding:18px 18px 16px;box-shadow:0 8px 18px rgba(107,77,255,.1)}
+.card h3{margin:0 0 8px;font-family:'Quicksand',sans-serif;font-weight:700;font-size:17px;line-height:1.3}
+.card p{font-size:13.5px;line-height:1.6;margin:0}
+.lab{display:block;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6B4DFF;margin-bottom:6px}
+.chip{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:99px;margin-bottom:10px;border:1.5px solid #241A3A}
+.chip.pub{background:#C4F4FF}.chip.ver{background:#E4D8FF}
+.diag{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0 16px}.diag b{opacity:.5}
+.diag span{background:linear-gradient(95deg,#FFE3F4,#E4F7FF);border:1.5px solid rgba(107,77,255,.25);border-radius:99px;padding:7px 14px;font-size:13px}
+.rule{margin:4px 0 6px;padding:14px 18px;border-radius:16px;background:linear-gradient(95deg,#FFE3F4,#E4D8FF 55%,#D6F5FF);font-family:'Quicksand',sans-serif;font-weight:700;font-size:19px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0 6px}
+th{text-align:left;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6B4DFF;padding:8px 10px;border-bottom:2px solid rgba(107,77,255,.25)}
+td{padding:11px 10px;border-bottom:1px solid rgba(107,77,255,.15);vertical-align:top;line-height:1.5}
+td:first-child{font-weight:600;white-space:nowrap}
+.st{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:3px 10px;border-radius:99px;border:1.5px solid #241A3A;white-space:nowrap}
+.st.built{background:#9FF5CF}.st.prog{background:#FFE599}.st.plan{background:#fff;border-style:dashed}
+.test{background:rgba(255,255,255,.92);border:1.5px solid rgba(107,77,255,.25);border-radius:18px;padding:18px 22px;margin:12px 0 14px}
+.test h3{margin:0 0 10px;font-family:'Quicksand',sans-serif;font-weight:700;font-size:18px}
+.test dl{margin:0;display:grid;grid-template-columns:100px 1fr;gap:8px 16px;font-size:14px}.test dt{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6B4DFF;padding-top:3px}.test dd{margin:0}
+.todo{background:#FFF3A6;border-radius:6px;padding:1px 6px}
+.next{border:2px dashed #E0359A;background:#FFF0F9;border-radius:18px;padding:18px 22px;position:relative}
+.next h3{margin:6px 0 8px;font-family:'Quicksand',sans-serif;font-weight:700;font-size:18px}.next p{font-size:14px;margin:0}
+.next .chip{background:#fff;border-color:#E0359A;color:#E0359A;margin:0}
+ul.stories{list-style:none;margin:10px 0 14px;padding:0;display:grid;gap:10px}
+ul.stories li{font-style:italic;font-size:15.5px;line-height:1.55;padding:10px 16px 10px 18px;border-left:4px solid #FF8FD0;background:rgba(255,255,255,.7);border-radius:0 12px 12px 0}
+ul.stories li:nth-child(2){border-left-color:#A78BFF}ul.stories li:nth-child(3){border-left-color:#6EE7FF}
+p.tracks{margin:20px 0 0!important;font-family:'Share Tech Mono',monospace;font-size:12px!important;letter-spacing:.08em;text-transform:uppercase;color:#6B4DFF}
+.theme{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:36px;line-height:1.1;margin:0 0 6px;-webkit-background-clip:text;background-clip:text;color:transparent}
+.theme.rel{background-image:linear-gradient(95deg,#12B886,#E0359A)}
+.theme.secu{background-image:linear-gradient(95deg,#E0359A,#8B5CF6 55%,#12B886)}
+.dcard h3 em{font-style:italic}
+ul.bul{margin:12px 0 0;padding-left:18px;font-size:13.5px;line-height:1.55}ul.bul li{margin-bottom:6px}
+ul.plain{margin:6px 0 4px;padding-left:20px;font-size:14.5px}ul.plain li{margin-bottom:7px}
+details{background:rgba(255,255,255,.9);border:1.5px solid rgba(107,77,255,.25);border-radius:14px;padding:0 18px;margin-bottom:10px}
+summary{cursor:pointer;padding:14px 0;font-family:'Quicksand',sans-serif;font-weight:700;font-size:16px;min-height:44px}
+details[open] summary{border-bottom:1px solid rgba(107,77,255,.15);margin-bottom:10px}details>div{padding-bottom:12px;font-size:14px}details p{font-size:14px!important}
+.foot{text-align:center;font-size:12px;opacity:.6;margin-top:30px}
+.portfolio-back{position:fixed;left:1.25rem;bottom:1.25rem;z-index:999;display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;border:1.5px solid currentColor;border-radius:999px;background:rgba(255,253,248,.92);color:#231F20;font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.04em;text-decoration:none;box-shadow:3px 4px 0 rgba(35,31,32,.14);transition:transform .15s,box-shadow .15s}
+.portfolio-back:hover,.portfolio-back:focus-visible{transform:translateY(-2px);box-shadow:5px 6px 0 rgba(35,31,32,.16)}
+@media(max-width:900px){
+ .hero{grid-template-columns:1fr;min-height:0}.hero h1{font-size:64px}
+ .iso{height:410px;transform:scale(.78);transform-origin:left top;margin-bottom:-80px;margin-top:10px}
+ .c4{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr}
+ .sec,.sec.alt{margin:0 0 30px;padding:24px 20px 26px}
+ .head h2{font-size:24px}.num{font-size:42px}
+}
+@media(max-width:600px){
+ .wrap{padding:22px 16px 90px}.hero h1{font-size:54px}.tagline{font-size:22px}
+ .c4,.c2{grid-template-columns:1fr}
+ .test dl{grid-template-columns:1fr;gap:2px 0}.test dt{padding-top:8px}
+ table,tbody,tr,td,th{display:block}thead{display:none}
+ tr{border-bottom:1px solid rgba(107,77,255,.2);padding:10px 0}td{border:0;padding:3px 0}td:first-child{white-space:normal;font-size:15px}
+ .portfolio-back{left:.9rem;bottom:max(.9rem,env(safe-area-inset-bottom));padding:.6rem .8rem;font-size:.66rem}
+}
+@media(prefers-reduced-motion:reduce){.btn,.portfolio-back{transition:none}}
+</style>
+</head>
+<body>
+<a class="portfolio-back" href="../../index.html" aria-label="View all case studies"><span aria-hidden="true">←</span><span>All case studies</span></a>
+<div class="wrap">
+
+<div class="top"><b>Ecclesia Morain</b><span>CASE STUDY :: AGENTIC AI</span></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <span class="kick">Salesforce Agentforce · Prototype</span>
+    <h1>Pathways AI</h1>
+    <p class="tagline">Helping a nonprofit help more people.</p>
+    <p class="lede">An AI agent that answers questions about training programs, shows applicants where they stand, and hands people to staff when a person is needed. Built with a data engineer's care for governance, so people can trust what it tells them.</p>
+    <a class="btn" href="https://pathways-ai.streamlit.app/" target="_blank" rel="noopener">Chat with Pathways AI →</a>
+    <p class="cap">Prototype. Fictional organization and synthetic data.</p>
+  </div>
+  <div class="iso" aria-hidden="true"><div class="slab s1">CHAT UI</div><div class="slab s2">SALESFORCE AGENTFORCE</div><div class="slab s3">CRM + KNOWLEDGE</div></div>
+</div>
+
+<!-- 01 -->
+<section class="sec" id="glance">
+  <div class="head"><span class="num">01</span><h2>At a glance</h2></div>
+  <div class="cards c4">
+    <div class="card"><span class="lab">Customer</span><p>A fictional workforce-development nonprofit</p></div>
+    <div class="card"><span class="lab">Built</span><p>An Agentforce agent on Salesforce, with a Streamlit chat window</p></div>
+    <div class="card"><span class="lab">Time</span><p>Five days, from idea to working prototype</p></div>
+    <div class="card"><span class="lab">Status</span><p>Prototype, tested hands-on, with known gaps listed below</p></div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="sec alt" id="problem">
+  <div class="head"><span class="num">02</span><h2>The Problem and How AI Helps</h2></div>
+  <ul class="stories">
+    <li>A college student pivoting away from a four-year degree wants to know which programs exist and whether they're eligible.</li>
+    <li>A career changer who needs steady income soon applied weeks ago and hasn't heard anything.</li>
+    <li>An applicant has a problem that no FAQ covers and needs to reach a real person.</li>
+  </ul>
+  <p>Pathways AI answers the routine questions, shows applicants where they stand, and passes everything else to staff, so the team behind Pathways can spend its time on people.</p>
+  <p class="tracks">Three assistance tracks I modeled for the MVP</p>
+  <div class="cards c3">
+    <div class="card"><span class="chip pub">PUBLIC</span><h3>Program guidance</h3><p>Ask about programs and admission requirements.</p></div>
+    <div class="card"><span class="chip ver">VERIFIED ONLY</span><h3>Application status</h3><p>Verify who you are, see where your application stands, and learn what to do next.</p></div>
+    <div class="card"><span class="chip ver">VERIFIED ONLY</span><h3>Talk to a person</h3><p>Ask for staff follow-up. The agent collects the details, confirms them, and creates the request.</p></div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="sec" id="how">
+  <div class="head"><span class="num">03</span><h2>How it works: two decisions</h2></div>
+  <div class="diag"><span>Streamlit chat</span><b>→</b><span>Salesforce Agentforce agent</span><b>→</b><span>Flows · CRM data · Knowledge · Apex</span></div>
+  <div class="rule">Salesforce decides. The AI explains.</div>
+  <div class="cards c2">
+    <div class="card dcard"><span class="lab">Decision 1</span><span class="theme rel">Reliability</span><h3>What is the AI allowed to <em>decide</em>?</h3>
+      <p>The next step in the conversation comes from a Salesforce formula. The agent only explains it, so it can't invent a requirement or deadline.</p>
+      <ul class="bul">
+        <li>The formula maps each application stage to a predefined next step.</li>
+        <li>Validation rules keep records complete, for example requiring the missing-documents list when an application is marked Documents Pending.</li>
+        <li>The agent acts through Flows with fixed inputs and outputs, so it can't improvise.</li>
+        <li>Unrelated template topics were removed, so there is less room to route a request the wrong way.</li>
+      </ul></div>
+    <div class="card dcard"><span class="lab">Decision 2</span><span class="theme secu">Security</span><h3>What is the AI allowed to <em>reach</em>?</h3>
+      <p>Private information is locked until the visitor verifies with a one-time code.</p>
+      <ul class="bul">
+        <li><b>Least privilege:</b> the agent runs as its own execution user with only the access it needs.</li>
+        <li>Object-level and field-level permissions limit which objects and fields it can read.</li>
+        <li>Applicant records are private by default, and program information is public read-only.</li>
+        <li>Verification is separate from the chat text. Typing an email address is not proof, which is why the code step exists.</li>
+        <li>A request is created only after the visitor confirms the details.</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="sec alt" id="governance">
+  <div class="head"><span class="num">04</span><h2>Governance at every layer</h2></div>
+  <p>As a data engineer, governance is where I start. An assistant that serves applicants has to be trustworthy before it can be useful, so I put a control at every layer.</p>
+  <table>
+    <thead><tr><th>Layer</th><th>What it does</th><th>Status</th></tr></thead>
+    <tbody>
+    <tr><td>Visitors</td><td>Unverified visitors get public program information only and can't submit requests</td><td><span class="st built">BUILT</span></td></tr>
+    <tr><td>Identity</td><td>Email one-time-code verification before any private read or write</td><td><span class="st built">BUILT</span></td></tr>
+    <tr><td>Agent</td><td>Limited to the three journeys, with unrelated template topics removed</td><td><span class="st built">BUILT</span></td></tr>
+    <tr><td>Actions</td><td>Business rules and validation in Salesforce; a request is created only after the visitor confirms the details</td><td><span class="st built">BUILT</span></td></tr>
+    <tr><td>Data</td><td>Applicant records private by default, and the agent can read only specific fields on them; program information is public read-only</td><td><span class="st built">BUILT</span></td></tr>
+    <tr><td>Accounts</td><td>The agent runs as its own execution user; a separate user for the API connection is the next step</td><td><span class="st plan">PLANNED</span></td></tr>
+    <!-- FILL IN: change to BUILT once the Streamlit app is connected to the live agent -->
+    <tr><td>Interface</td><td>Streamlit passes messages along and never decides who is verified</td><td><span class="st prog">IN PROGRESS</span></td></tr>
+    </tbody>
+  </table>
+  <p class="small">I've tested these hands-on, but the testing isn't comprehensive yet.</p>
+</section>
+
+<!-- 05 -->
+<section class="sec" id="tested">
+  <div class="head"><span class="num">05</span><h2>How I tested it</h2></div>
+  <p>The check that matters most for an assistant with private data is whether the gate holds. I started with the ideal path: verify, see a limited set of application details, then create a follow-up request. Then I went looking for ways it could break. Here is one of those tests.</p>
+  <div class="test">
+    <h3>One test, start to finish: a frustrated visitor asks for help</h3>
+    <dl>
+      <dt>Tried</dt><dd>I started a fresh session as a visitor who hadn't verified. In everyday words, not the system's, I said I wanted to file a report because I never got an update on my application.</dd>
+      <dt>Expected</dt><dd>The agent asks me to verify first, then collects the details for a follow-up request.</dd>
+      <dt>Found</dt><dd>Two problems. The request landed in a template escalation subagent that had no action behind it. After I fixed that, the agent went straight to creating a follow-up request for an unverified visitor, because my own instructions said guests could.</dd>
+      <dt>Changed</dt><dd>I deleted the unused escalation subagent instead of building a flow nobody needed yet. I rewrote the instructions so guests can never create a follow-up request. Guests can't be tracked, so open submissions invite abuse, and I haven't built handling for that case.</dd>
+      <dt>Retested</dt><dd>A visitor who gave everything up front went through without trouble. A visitor who gave vague details, or asked for things that need verification, was stopped. A verified visitor confirmed the details and a new follow-up request record appeared.</dd>
+    </dl>
+  </div>
+  <p>The rest of the testing followed the same layers. I checked the pieces that don't change first, such as the Flows and a small Apex method that supplies the follow-up categories. Then I tested the agent in Agentforce Builder with normal conversations, wrong-way conversations, and odd or incomplete input. Not every scenario passes yet, and automated regression testing is on my list of next steps.</p>
+</section>
+
+<!-- 06 -->
+<section class="sec alt" id="next">
+  <div class="head"><span class="num">06</span><h2>Success, scope, and what's next</h2></div>
+  <p><b>How I'd know it's working.</b> This is a simulation, so there are no results to report. These are the four things I would track.</p>
+  <div class="cards c4">
+    <div class="card"><h3>Questions answered</h3><p>People get their answer or finish their request without needing staff.</p></div>
+    <div class="card"><h3>Correct answers</h3><p>What the agent says matches the current program information and the applicant's actual record.</p></div>
+    <div class="card"><h3>Private data stays private</h3><p>No private record is ever shown to an unverified visitor.</p></div>
+    <div class="card"><h3>Useful handoffs</h3><p>Follow-up requests reach staff complete, so nobody has to ask again.</p></div>
+  </div>
+  <p style="margin-top:22px"><b>How I scoped five days.</b></p>
+  <ul class="plain">
+    <li>I prioritized the outcome: showing the three journeys working for a person from start to finish.</li>
+    <li>I still tested before building on top, starting with the pieces that don't change and then the agent.</li>
+    <li>I scoped the testing too. Quick Execute Anonymous checks stood in for formal unit tests.</li>
+    <li>I deferred, on purpose: a regression suite, audit logging and monitoring, rate and cost planning, the separate API user, and requests from guests. Guests can't be tracked, so for now only verified applicants can submit one.</li>
+  </ul>
+  <div class="next" style="margin-top:20px">
+    <span class="chip">PLANNED · NEXT ITERATION</span>
+    <h3>When the knowledge base and the CRM disagree</h3>
+    <p>Right now the knowledge documents and the CRM tell the same story: two active programs. Real organizations don't stay that tidy. Programs get retired, paused, or announced before anyone creates a record, and the old guides stay in the knowledge base. Next I'll add programs to the documents that are inactive or have no CRM record, and test whether the agent offers them as currently available. My plan is to treat active Training Program records as the source of truth for availability and use the documents only for description, so a stale document can't turn into an enrollment offer. I chose this case because this kind of mismatch is easy to miss in a demo and costly after launch. It's one edge case of many, and I didn't try to cover them all in five days.</p>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section id="notes" style="margin:0 0 20px">
+  <details><summary>Engineering notes: data model</summary><div>
+    <table><thead><tr><th>Journey</th><th>Records</th><th>Actions</th></tr></thead><tbody>
+    <tr><td>Program guidance</td><td>Training Program; program guides and FAQs</td><td>Find and explain program information</td></tr>
+    <tr><td>Application status</td><td>Contact; Application</td><td>Verify identity; retrieve authorized status; determine next step</td></tr>
+    <tr><td>Human assistance</td><td>Contact; Application; Follow-Up Request</td><td>Collect details; confirm; create request</td></tr>
+    </tbody></table></div></details>
+  <details><summary>Engineering notes: design details</summary><div>
+    <p>IDs and display-only dates pass between Agentforce and Flows as Text, and flags as Boolean, to reduce type mismatches. Records keep their native field types.</p>
+    <p>Follow-up categories are read from the Salesforce picklist, so changing the picklist needs no prompt edits. I checked the method's output with Execute Anonymous and deferred formal unit tests for this time-boxed prototype.</p>
+    <p>A Follow-Up Request must belong to the same Contact as its Application, and a validation rule enforces that.</p></div></details>
+  <details><summary>Engineering notes: delivery plan</summary><div>
+    <p>I planned four sprints: an integration feasibility check, the CRM and core agent, knowledge retrieval and human assistance, and frontend integration with evaluation. Each one had its own test and exit criterion before moving on.</p></div></details>
+</section>
+
+<p class="foot">Ecclesia Morain &nbsp;·&nbsp; Pathways AI case study &nbsp;·&nbsp; November 2026 &nbsp;·&nbsp; Fictional organization and synthetic data</p>
+</div>
+</body>
+</html>
