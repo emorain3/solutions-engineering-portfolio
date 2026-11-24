@@ -71,6 +71,12 @@ p.tracks{margin:20px 0 0!important;font-family:'Share Tech Mono',monospace;font-
 .theme.secu{background-image:linear-gradient(95deg,#E0359A,#8B5CF6 55%,#12B886)}
 .dcard h3 em{font-style:italic}
 ul.bul{margin:12px 0 0;padding-left:18px;font-size:13.5px;line-height:1.55}ul.bul li{margin-bottom:6px}
+table.gov td.q{font-style:italic;white-space:normal;width:19%}
+table.gov td:first-child{width:15%}
+.lay{display:inline-flex;align-items:center;gap:10px}
+.ico{flex:0 0 34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFE3F4,#E4F7FF);border:1.5px solid rgba(107,77,255,.25)}
+table.tst td:first-child{width:14%}table.tst td{width:43%}
+table.tst td[data-label]::before{display:none}
 ul.plain{margin:6px 0 4px;padding-left:20px;font-size:14.5px}ul.plain li{margin-bottom:7px}
 details{background:rgba(255,255,255,.9);border:1.5px solid rgba(107,77,255,.25);border-radius:14px;padding:0 18px;margin-bottom:10px}
 summary{cursor:pointer;padding:14px 0;font-family:'Quicksand',sans-serif;font-weight:700;font-size:16px;min-height:44px}
@@ -89,8 +95,9 @@ details[open] summary{border-bottom:1px solid rgba(107,77,255,.15);margin-bottom
  .wrap{padding:22px 16px 90px}.hero h1{font-size:54px}.tagline{font-size:22px}
  .c4,.c2{grid-template-columns:1fr}
  .test dl{grid-template-columns:1fr;gap:2px 0}.test dt{padding-top:8px}
+ table.tst td[data-label]::before{display:block;content:attr(data-label);font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6B4DFF;margin:8px 0 2px}
  table,tbody,tr,td,th{display:block}thead{display:none}
- tr{border-bottom:1px solid rgba(107,77,255,.2);padding:10px 0}td{border:0;padding:3px 0}td:first-child{white-space:normal;font-size:15px}
+ tr{border-bottom:1px solid rgba(107,77,255,.2);padding:10px 0}td{border:0;padding:3px 0}td:first-child{white-space:normal;font-size:15px}table.gov td.q,table.gov td:first-child{width:auto}table.tst td,table.tst td:first-child{width:auto}
  .portfolio-back{left:.9rem;bottom:max(.9rem,env(safe-area-inset-bottom));padding:.6rem .8rem;font-size:.66rem}
 }
 @media(prefers-reduced-motion:reduce){.btn,.portfolio-back{transition:none}}
@@ -122,7 +129,7 @@ details[open] summary{border-bottom:1px solid rgba(107,77,255,.15);margin-bottom
     <div class="card"><span class="lab">Customer</span><p>A fictional workforce-development nonprofit</p></div>
     <div class="card"><span class="lab">Built</span><p>An Agentforce agent on Salesforce, with a Streamlit chat window</p></div>
     <div class="card"><span class="lab">Time</span><p>Five days, from idea to working prototype</p></div>
-    <div class="card"><span class="lab">Status</span><p>Prototype, tested hands-on, with known gaps listed below</p></div>
+    <div class="card"><span class="lab">Status</span><p>A focused proof of concept, built and tested in five days</p></div>
   </div>
 </section>
 
@@ -173,70 +180,65 @@ details[open] summary{border-bottom:1px solid rgba(107,77,255,.15);margin-bottom
 <section class="sec alt" id="governance">
   <div class="head"><span class="num">04</span><h2>Governance at every layer</h2></div>
   <p>As a data engineer, governance is where I start. An assistant that serves applicants has to be trustworthy before it can be useful, so I put a control at every layer.</p>
-  <table>
-    <thead><tr><th>Layer</th><th>What it does</th><th>Status</th></tr></thead>
+  <table class="gov">
+    <thead><tr><th>Layer</th><th>The question</th><th>The control</th></tr></thead>
     <tbody>
-    <tr><td>Visitors</td><td>Unverified visitors get public program information only and can't submit requests</td><td><span class="st built">BUILT</span></td></tr>
-    <tr><td>Identity</td><td>Email one-time-code verification before any private read or write</td><td><span class="st built">BUILT</span></td></tr>
-    <tr><td>Agent</td><td>Limited to the three journeys, with unrelated template topics removed</td><td><span class="st built">BUILT</span></td></tr>
-    <tr><td>Actions</td><td>Business rules and validation in Salesforce; a request is created only after the visitor confirms the details</td><td><span class="st built">BUILT</span></td></tr>
-    <tr><td>Data</td><td>Applicant records private by default, and the agent can read only specific fields on them; program information is public read-only</td><td><span class="st built">BUILT</span></td></tr>
-    <tr><td>Accounts</td><td>The agent runs as its own execution user; a separate user for the API connection is the next step</td><td><span class="st plan">PLANNED</span></td></tr>
-    <!-- FILL IN: change to BUILT once the Streamlit app is connected to the live agent -->
-    <tr><td>Interface</td><td>Streamlit passes messages along and never decides who is verified</td><td><span class="st prog">IN PROGRESS</span></td></tr>
+    <tr><td><span class="lay"><span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B4DFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>Interface</span></td><td class="q">Who makes decisions?</td><td>Streamlit only shows the conversation and passes messages along. It never decides.</td></tr>
+    <tr><td><span class="lay"><span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B4DFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>Identity</span></td><td class="q">Who are you?</td><td>Guests get public information only. Private information unlocks after an email one-time-code check.</td></tr>
+    <tr><td><span class="lay"><span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B4DFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9 16.5h6"/></svg></span>Agent</span></td><td class="q">What can the AI do? What can it see?</td><td>Limited to three journeys, with unrelated template topics removed. Access starts read-only on specific fields. Create and edit access is granted only for follow-up requests, because that user story needs it.</td></tr>
+    <tr><td><span class="lay"><span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B4DFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span>Automation</span></td><td class="q">What are the rules?</td><td>Flows and Apex apply the business rules, and a request is created only after the visitor confirms. As many decisions as possible are fixed rules, so the agent never has to make a judgment call on something with one right answer.</td></tr>
+    <tr><td><span class="lay"><span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B4DFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></span>Data</span></td><td class="q">Who can see what?</td><td><b>Least privilege.</b> Records are private by default, and object-level and field-level permissions, assigned to users through permission sets, give each only the access it needs.</td></tr>
     </tbody>
   </table>
-  <p class="small">I've tested these hands-on, but the testing isn't comprehensive yet.</p>
 </section>
 
 <!-- 05 -->
 <section class="sec" id="tested">
-  <div class="head"><span class="num">05</span><h2>How I tested it</h2></div>
-  <p>The check that matters most for an assistant with private data is whether the gate holds. I started with the ideal path: verify, see a limited set of application details, then create a follow-up request. Then I went looking for ways it could break. Here is one of those tests.</p>
+  <div class="head"><span class="num">05</span><h2>Testing Builds Credibility</h2></div>
+  <p>An AI product is only as credible as its testing, and so is its engineer. With five days, I chose the smallest set of tests that still makes a credible proof of concept, and I mapped what a production version would add.</p>
+  <table class="tst">
+    <thead><tr><th>Layer</th><th>MVP scope</th><th>Production quality</th></tr></thead>
+    <tbody>
+    <tr><td><span class="lay">Access</span></td><td data-label="MVP scope">Records private by default, with object-level and field-level permissions set.</td><td data-label="Production quality">Sign in as each type of user and confirm what each can see, read, edit, or create, down to field and record level.</td></tr>
+    <tr><td><span class="lay">Automations</span></td><td data-label="MVP scope">Flows and Apex checked for correct, repeatable output. The Documents Pending validation rule checked.</td><td data-label="Production quality">Break them on purpose with missing or unexpected data, make failures loud and specific, and stay within Salesforce <b>query and rate limits</b>.</td></tr>
+    <tr><td><span class="lay">Agent</span></td><td data-label="MVP scope">Normal, vague, unusual, and unverified-visitor conversations in Agentforce.</td><td data-label="Production quality">Full happy-path, negative-path, and edge-case coverage. How it explains a problem and escalates. Proof it can't reach outside its permissions.</td></tr>
+    <tr><td><span class="lay">User stories</span></td><td data-label="MVP scope">The three journeys walked by hand in Agentforce, the way a visitor would.</td><td data-label="Production quality">Each journey tested end to end through the real chat interface, including prompt-injection and wrong-person attempts, plus an automated regression suite so every change is rechecked.</td></tr>
+    </tbody>
+  </table>
   <div class="test">
-    <h3>One test, start to finish: a frustrated visitor asks for help</h3>
+    <h3>An example of testing I did</h3>
     <dl>
-      <dt>Tried</dt><dd>I started a fresh session as a visitor who hadn't verified. In everyday words, not the system's, I said I wanted to file a report because I never got an update on my application.</dd>
-      <dt>Expected</dt><dd>The agent asks me to verify first, then collects the details for a follow-up request.</dd>
-      <dt>Found</dt><dd>Two problems. The request landed in a template escalation subagent that had no action behind it. After I fixed that, the agent went straight to creating a follow-up request for an unverified visitor, because my own instructions said guests could.</dd>
-      <dt>Changed</dt><dd>I deleted the unused escalation subagent instead of building a flow nobody needed yet. I rewrote the instructions so guests can never create a follow-up request. Guests can't be tracked, so open submissions invite abuse, and I haven't built handling for that case.</dd>
-      <dt>Retested</dt><dd>A visitor who gave everything up front went through without trouble. A visitor who gave vague details, or asked for things that need verification, was stopped. A verified visitor confirmed the details and a new follow-up request record appeared.</dd>
+      <dt>Tried</dt><dd>As an unverified, frustrated visitor, I asked in everyday words to file a report about an update I never received.</dd>
+      <dt>Found</dt><dd>The request landed in an empty escalation subagent. After I fixed that, my own instructions let a guest create a request.</dd>
+      <dt>Fixed</dt><dd>I removed the empty subagent and rewrote the instructions so only verified applicants can submit one. Then I reran the guest, vague, and all-details cases.</dd>
     </dl>
   </div>
-  <p>The rest of the testing followed the same layers. I checked the pieces that don't change first, such as the Flows and a small Apex method that supplies the follow-up categories. Then I tested the agent in Agentforce Builder with normal conversations, wrong-way conversations, and odd or incomplete input. Not every scenario passes yet, and automated regression testing is on my list of next steps.</p>
 </section>
 
 <!-- 06 -->
 <section class="sec alt" id="next">
-  <div class="head"><span class="num">06</span><h2>Success, scope, and what's next</h2></div>
-  <p><b>How I'd know it's working.</b> This is a simulation, so there are no results to report. These are the four things I would track.</p>
-  <div class="cards c4">
-    <div class="card"><h3>Questions answered</h3><p>People get their answer or finish their request without needing staff.</p></div>
-    <div class="card"><h3>Correct answers</h3><p>What the agent says matches the current program information and the applicant's actual record.</p></div>
-    <div class="card"><h3>Private data stays private</h3><p>No private record is ever shown to an unverified visitor.</p></div>
-    <div class="card"><h3>Useful handoffs</h3><p>Follow-up requests reach staff complete, so nobody has to ask again.</p></div>
+  <div class="head"><span class="num">06</span><h2>Measuring Success and What's Next</h2></div>
+  <div class="cards c3">
+    <div class="card"><h3>Does it work correctly and safely?</h3><p>A repeatable set of realistic scenarios, including happy paths, edge cases, and unauthorized requests, compared against expected outcomes for accuracy, reliability, and security.</p></div>
+    <div class="card"><h3>Does it help applicants and staff?</h3><p>Self-service completion, time to resolution, and whether follow-up requests reach staff with everything needed to act, compared with a pre-AI baseline in a real pilot.</p></div>
+    <div class="card"><h3>What would I improve next?</h3><p>Test conflicts between knowledge documents and live CRM records, expand automated regression and security testing, and add monitoring and audit logging.</p></div>
   </div>
-  <p style="margin-top:22px"><b>How I scoped five days.</b></p>
-  <ul class="plain">
-    <li>I prioritized the outcome: showing the three journeys working for a person from start to finish.</li>
-    <li>I still tested before building on top, starting with the pieces that don't change and then the agent.</li>
-    <li>I scoped the testing too. Quick Execute Anonymous checks stood in for formal unit tests.</li>
-    <li>I deferred, on purpose: a regression suite, audit logging and monitoring, rate and cost planning, the separate API user, and requests from guests. Guests can't be tracked, so for now only verified applicants can submit one.</li>
-  </ul>
+  <p class="small" style="margin-top:14px">This proof of concept hasn't been evaluated with real applicants or staff. These measures would guide a customer pilot.</p>
+  <p><b>How I scoped five days.</b> I prioritized showing the three journeys working end to end and tested the foundations first. I deferred a regression suite, audit logging and monitoring, the separate API user, and guest requests, which need their own abuse protection.</p>
   <div class="next" style="margin-top:20px">
     <span class="chip">PLANNED · NEXT ITERATION</span>
     <h3>When the knowledge base and the CRM disagree</h3>
-    <p>Right now the knowledge documents and the CRM tell the same story: two active programs. Real organizations don't stay that tidy. Programs get retired, paused, or announced before anyone creates a record, and the old guides stay in the knowledge base. Next I'll add programs to the documents that are inactive or have no CRM record, and test whether the agent offers them as currently available. My plan is to treat active Training Program records as the source of truth for availability and use the documents only for description, so a stale document can't turn into an enrollment offer. I chose this case because this kind of mismatch is easy to miss in a demo and costly after launch. It's one edge case of many, and I didn't try to cover them all in five days.</p>
+    <p>Right now the knowledge documents and the CRM agree: two active programs. Real organizations drift. Programs get retired or announced before a record exists, and old guides linger. Next I'll add inactive programs, and programs with no CRM record, to the documents and test whether the agent offers them as available. My plan is to treat active Training Program records as the source of truth for availability and use the documents only for description. I chose this case because this kind of mismatch is easy to miss in a demo and costly after launch. It's one edge case of many.</p>
   </div>
 </section>
 
 <!-- NOTES -->
 <section id="notes" style="margin:0 0 20px">
   <details><summary>Engineering notes: data model</summary><div>
-    <table><thead><tr><th>Journey</th><th>Records</th><th>Actions</th></tr></thead><tbody>
+    <table><thead><tr><th>User interaction</th><th>Salesforce objects</th><th>Actions (Flows, Apex, validation rules, etc.)</th></tr></thead><tbody>
     <tr><td>Program guidance</td><td>Training Program; program guides and FAQs</td><td>Find and explain program information</td></tr>
     <tr><td>Application status</td><td>Contact; Application</td><td>Verify identity; retrieve authorized status; determine next step</td></tr>
-    <tr><td>Human assistance</td><td>Contact; Application; Follow-Up Request</td><td>Collect details; confirm; create request</td></tr>
+    <tr><td>Human escalation</td><td>Contact; Application; Follow-Up Request</td><td>Collect details; confirm; create request</td></tr>
     </tbody></table></div></details>
   <details><summary>Engineering notes: design details</summary><div>
     <p>IDs and display-only dates pass between Agentforce and Flows as Text, and flags as Boolean, to reduce type mismatches. Records keep their native field types.</p>
